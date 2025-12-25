@@ -1,57 +1,42 @@
-# Compatibility
+# ⚠️ Deprecated: WHMCS EPP CoCCA
 
-This module is supposed to work with all registries using the CoCCA platform.
+This repository is **deprecated** and is no longer maintained.
 
-# WHMCS Module Installation instructions
+It has been replaced by the actively maintained, generic WHMCS EPP registrar module:
 
-1. Download and install [WHMCS](https://whmcs.com/)
+👉 https://github.com/getnamingo/whmcs-epp-registrar
 
-2. Place the repository as **cocca** directory in `[WHMCS]/modules/registrars`, place your key.pem and cert.pem files in the same cocca directory.
+---
 
-3. Activate from Configuration -> Apps & Integrations -> (search for cocca) -> Activate
+## What changed?
 
-4. Configure from Configuration -> System Settings -> Domain Registrars
+This project was created for CoCCA-style EPP integrations. It is now obsolete and has been superseded by a cleaner, more flexible module intended for broad EPP registry compatibility.
 
-5. Add a new TLD using Configuration -> System Settings -> Domain Pricing
+---
 
-6. Create a **whois.json** file in `[WHMCS]/resources/domains` and add the following:
+## What should you do?
 
-```
-[
-    {
-        "extensions": ".yourtld",
-        "uri": "socket://your.whois.url",
-        "available": "NOT FOUND"
-    }
-]
-```
+- **New installations**: use  
+  https://github.com/getnamingo/whmcs-epp-registrar
 
-You should be good to go now.
+- **Existing installations**: plan migration to  
+  https://github.com/getnamingo/whmcs-epp-registrar
 
-# Troubleshooting
+No further updates or fixes will be released for this repository.
 
-## Fixing "Oops!" Issues in WHMCS
+---
 
-If you experience "Oops!" or blank page errors in WHMCS after activating the CoCCA EPP module, it might be caused by incorrect file permissions or ownership. Follow these steps to fix it:
+## Status
 
-```bash
-chown -R www-data:www-data /var/www/html/whmcs/modules/registrars/cocca
-chmod -R 755 /var/www/html/whmcs/modules/registrars/cocca
-```
+- ❌ Deprecated
+- ❌ No active development
+- ❌ No support
 
-Replace `/var/www/html/whmcs` with the path to your WHMCS installation, if different.
+Use the current project instead:  
+https://github.com/getnamingo/whmcs-epp-registrar
 
-## Generating an SSL Certificate and Key
+---
 
-If you do not have an SSL certificate and private key for secure communication with the registry, you can generate one using OpenSSL.
+## License
 
-```bash
-openssl genrsa -out key.pem 2048
-openssl req -new -x509 -key key.pem -out cert.pem -days 365
-```
-
-**Note:** For production environments, it's recommended to use a certificate signed by a trusted Certificate Authority (CA) instead of a self-signed certificate.
-
-## Need More Help?
-
-If the steps above don’t resolve your issue, refer to the WHMCS logs (`/path/to/whmcs/logs`) or enable `Display Errors` in the WHMCS Admin under `Utilities > System > General Settings > Other` to identify the specific problem.
+This repository remains available under its original license.
